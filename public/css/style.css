@@ -3,10 +3,10 @@
 /* -------------------------- */
 .top-header {
     background: #ffffff;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.05); /* Soft shadow */
-    position: sticky; /* Stick to top while scrolling */
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05); /* Soft shadow for header */
+    position: sticky; /* Header sticks to top on scroll */
     top: 0;
-    z-index: 1000; /* Stay on top of other elements */
+    z-index: 1000; /* Keeps header above all other content */
 }
 
 .header-container {
@@ -14,8 +14,8 @@
     margin: 0 auto;
     padding: 15px 20px;
     display: flex;
-    justify-content: space-between;
-    align-items: center;
+    justify-content: space-between; /* Space between logo and nav */
+    align-items: center; /* Vertically center items */
 }
 
 .logo-area {
@@ -31,13 +31,13 @@
 
 .logo-text {
     font-size: 1.5rem;
-    color: #2563eb; /* Blue color */
+    color: #2563eb; /* Blue text */
     font-weight: bold;
 }
 
 .main-nav {
     display: flex;
-    gap: 20px;
+    gap: 20px; /* Space between nav links */
 }
 
 .nav-link {
@@ -47,7 +47,7 @@
 }
 
 .nav-link:hover {
-    color: #2563eb; /* Hover effect */
+    color: #2563eb; /* Hover color for nav links */
 }
 
 /* -------------------------- */
@@ -63,7 +63,7 @@
     max-width: 1200px;
     margin: auto;
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Responsive columns */
     gap: 30px;
     padding: 0 20px 40px;
 }
@@ -112,10 +112,10 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  min-height: 100vh;
+  min-height: 100vh; /* Full screen height */
 }
 
-/* Form container */
+/* Registration form wrapper */
 .form-wrapper {
   background: white;
   padding: 40px 30px;
@@ -126,14 +126,14 @@
   text-align: center;
 }
 
-/* Form title */
+/* Title of the form */
 .form-title {
   margin-bottom: 20px;
   font-size: 24px;
   color: #1f2937;
 }
 
-/* Input fields */
+/* Input fields styling */
 .form-input {
   width: 100%;
   padding: 12px;
@@ -149,7 +149,7 @@
   border-color: #2563eb;
 }
 
-/* Submit button */
+/* Submit button for form */
 .form-button {
   width: 100%;
   padding: 12px;
@@ -167,7 +167,7 @@
   background-color: #1d4ed8;
 }
 
-/* Success or error message */
+/* Success or error messages */
 .form-message {
   margin-top: 15px;
   color: #10b981; /* Use red (#ef4444) for error */
@@ -194,6 +194,7 @@ body.login-page {
     padding: 20px;
 }
 
+/* Login form box */
 .login-box {
     background-color: #fff;
     padding: 30px 25px;
@@ -209,6 +210,7 @@ body.login-page {
     color: #333;
 }
 
+/* Input fields for login */
 .login-box input[type="email"],
 .login-box input[type="password"] {
     width: 100%;
@@ -220,6 +222,7 @@ body.login-page {
     font-size: 15px;
 }
 
+/* Login button */
 .login-box button {
     width: 100%;
     padding: 12px;
@@ -236,7 +239,7 @@ body.login-page {
     background-color: #0056b3;
 }
 
-/* Login and Register Links Style */
+/* Login and register link styles */
 .nav-link {
     margin-top: 20px;
     display: flex;
@@ -254,15 +257,13 @@ body.login-page {
     color: #3673ce;
 }
 
-
-/* Error message */
+/* Error message below input */
 .error-message {
     color: red;
     font-size: 14px;
     margin-top: 3px;
     text-align: center;
 }
-
 
 /* -------------------------- */
 /* Profile Page Styles        */
@@ -285,6 +286,7 @@ body.profile-page {
     padding: 40px 20px;
 }
 
+/* Card displaying user info */
 .profile-card {
     background: #ffffff;
     padding: 40px;
@@ -322,4 +324,80 @@ body.profile-page {
 
 .logout-button:hover {
     background-color: #0097a7;
+}
+
+/* -------------------------- */
+/* Create Post Page Styles    */
+/* -------------------------- */
+body.create-post-page {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: #f0f2f5;
+    margin: 0;
+    padding: 0;
+}
+
+.form-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 50px;
+}
+
+/* Card containing the post form */
+.form-card {
+    background: #ffffff;
+    padding: 30px;
+    width: 450px;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+.form-title {
+    text-align: center;
+    font-size: 24px;
+    margin-bottom: 25px;
+    color: #333;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 8px;
+    color: #555;
+}
+
+/* Inputs and textarea for post form */
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 14px;
+    box-sizing: border-box;
+}
+
+.form-group textarea {
+    resize: vertical;
+}
+
+/* Submit button for post form */
+.submit-btn {
+    width: 100%;
+    background: #007bff;
+    color: white;
+    padding: 12px;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.submit-btn:hover {
+    background: #0056b3;
 }
