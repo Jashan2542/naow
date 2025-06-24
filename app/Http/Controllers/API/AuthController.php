@@ -1,14 +1,14 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\API;
 
-
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Users;
 use Illuminate\support\Facades\Hash;
 use Illuminate\Validation\ValidationException;
 
-class JassController extends Controller
+class AuthController extends Controller
 {
     // Handle user registration
     public function register(Request $request)

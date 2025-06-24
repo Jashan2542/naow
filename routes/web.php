@@ -3,9 +3,11 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\Admin\AdminAuthController;
+use App\Http\Controllers\Admin\AdminController;
 
 // =========================
-// AUTH ROUTES
+// AUTH ROUTES (User Side)
 // =========================
 
 // Show the registration form
@@ -42,7 +44,7 @@ Route::middleware('auth')->group(function () {
 // POST MANAGEMENT ROUTES
 // =========================
 
-// Additional routes for post creation, accessible only to logged-in users
+// Routes accessible only to authenticated users
 Route::middleware('auth')->group(function () {
 
     // Show user profile page (from UserController) — may override previous profile route
@@ -53,4 +55,37 @@ Route::middleware('auth')->group(function () {
 
     // Handle submission of new post data
     Route::post('/posts/store', [UserController::class, 'storePost'])->name('posts.store');
+});
+
+// =========================
+// ADMIN AUTH ROUTES
+// =========================
+
+// Admin login/logout routes
+Route::middleware('web')->prefix('admin')->group(function () {
+    // Show admin login form
+    Route::get('/login', [AdminAuthController::class, 'showLoginForm'])->name('admin.login');
+
+    // Handle admin login
+    Route::post('/login', [AdminAuthController::class, 'login'])->name('admin.login.submit');
+
+    // Handle admin logout
+    Route::post('/logout', [AdminAuthController::class, 'logout'])->name('admin.logout');
+});
+
+// =========================
+// ADMIN PROTECTED ROUTES
+// =========================
+
+// Admin-only routes (requires authentication)
+Route::middleware('auth')->prefix('admin')->group(function () {
+
+    // Show admin dashboard
+    Route::get('/dashboard', [AdminController::class, 'dashboard'])->name('admin.dashboard');
+
+    // Show user management page for admin
+    Route::get('/users', [AdminController::class, 'users'])->name('admin.users');
+
+    // Delete user by ID
+    Route::delete('/users/{id}', [AdminController::class, 'deleteUser'])->name('admin.users.delete');
 });
