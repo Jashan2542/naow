@@ -2,31 +2,36 @@
 <html>
 <head>
     <title>Admin Login</title>
+    <link rel="stylesheet" href="{{ asset('css/admin.css') }}">
 </head>
-<body>
-    <h2>Admin Login</h2>
+<body class="admin-login-page">
 
-    <!-- Show validation error if any -->
-    @if ($errors->any())
-        <div style="color: red;">
-            {{ $errors->first() }}
-        </div>
-    @endif
+    <div class="login-container">
+        <h2 class="login-title">Admin Login</h2>
 
-    <!-- Admin login form -->
-    <form method="POST" action="{{ route('admin.login.submit') }}">
-        @csrf {{-- CSRF protection --}}
-        
-        <!-- Email input -->
-        <label>Email:</label>
-        <input type="email" name="email" required><br><br>
+        <!-- Show validation error if any -->
+        @if ($errors->any())
+            <div class="error-message">
+                {{ $errors->first() }}
+            </div>
+        @endif
 
-        <!-- Password input -->
-        <label>Password:</label>
-        <input type="password" name="password" required><br><br>
+        <!-- Admin login form -->
+        <form method="POST" action="{{ route('admin.login.submit') }}" class="login-form">
+            @csrf
 
-        <!-- Submit button -->
-        <button type="submit">Login as Admin</button>
-    </form>
+            <!-- Email input -->
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required class="form-input">
+
+            <!-- Password input -->
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" required class="form-input">
+
+            <!-- Submit button -->
+            <button type="submit" class="btn-submit">Login</button>
+        </form>
+    </div>
+
 </body>
 </html>

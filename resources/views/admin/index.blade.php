@@ -1,21 +1,18 @@
-<!-- Extend the admin layout (optional layout) -->
 @extends('admin.layout')
 
-<!-- Define the content section -->
 @section('content')
-    {{-- Page heading --}}
-    <h2>All Users</h2>
+    <!-- Page heading -->
+    <h2 class="page-title">All Users</h2>
 
-    <!-- Display success message if user was deleted -->
+    <!-- Success message -->
     @if (session('success'))
-        <div style="color: green;">{{ session('success') }}</div>
+        <div class="alert-success">{{ session('success') }}</div>
     @endif
 
-    <!-- Users table -->
-    <table border="1" cellpadding="10" cellspacing="0" >
+    <!-- Users Table -->
+    <table class="users-table">
         <thead>
-            <tr>
-                <!-- Table headers -->
+            <tr><!-- User table column name -->
                 <th>ID</th>
                 <th>Name</th>
                 <th>Email</th>
@@ -23,23 +20,26 @@
             </tr>
         </thead>
         <tbody>
-            <!-- Loop through each user -->
             @foreach ($users as $user)
-            <tr>
-                <!-- Display user data -->
+            <tr><!-- Featch user details -->
                 <td>{{ $user->id }}</td>
                 <td>{{ $user->name }}</td>
                 <td>{{ $user->email }}</td>
                 <td>
-                    <!-- Delete button for each user -->
-                    <form action="{{ route('admin.users.delete', $user->id) }}" method="POST" style="display: inline;" onsubmit="return confirm('Are you sure to delete this user?');">
-                        @csrf {{-- CSRF token --}}
-                        @method('DELETE') {{-- Spoofing the DELETE method --}}
-                        <button type="submit" style="color: red;">Delete</button>
+                    <!-- Delete Button -->
+                    <form action="{{ route('admin.users.delete', $user->id) }}" method="POST" class="delete-form" onsubmit="return confirm('Are you sure to delete this user?');">
+                        @csrf
+                        @method('DELETE')
+                        <button type="submit" class="delete-button">Delete</button>
                     </form>
                 </td>
             </tr>
             @endforeach
         </tbody>
     </table>
+
+    <div class="add-user-wrapper">
+    <a href="{{ route('admin.users.create') }}" class="btn-add-user">+ Add User</a>
+</div>
+
 @endsection

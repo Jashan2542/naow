@@ -2,20 +2,22 @@
 <html>
 <head>
     <title>Admin Panel</title>
+    <link rel="stylesheet" href="{{ asset('css/admin.css') }}">
 </head>
-<body>
-    <!-- Page Heading -->
-    <h1>Admin Panel</h1>
+<body class="admin-body">
 
-    <!-- Navigation Links -->
-    <nav>
-        <a href="{{ url('/admin/dashboard') }}">Dashboard</a> |
-        <a href="{{ route('admin.users') }}">Users</a>
+    <!-- Navigation Bar -->
+    <nav class="admin-nav">
+        <div class="nav-container">
+            <a href="{{ route('admin.dashboard') }}" class="nav-link">Dashboard</a>
+            <a href="{{ route('admin.users') }}" class="nav-link">Users Details</a>
+        </div>
     </nav>
 
-    <hr>
+    <!-- Main Content Section -->
+    <main class="admin-content">
+        @yield('content') 
+    </main>
 
-    <!-- Section where child views will inject their content -->
-    @yield('content')
 </body>
 </html>
